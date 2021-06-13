@@ -39,7 +39,7 @@ public class Textenergy : MonoBehaviour
         {
             InvokeRepeating("UpEnergy", 1, 1);
         }
-
+        
         if (EnergyCurrent <= 0)
         {
             EnergyDownTF = false;
@@ -56,7 +56,7 @@ public class Textenergy : MonoBehaviour
         {
             InvokeRepeating("DownEnergy", 1, 1);
         }
-
+        
         if (EnergyCurrent >= 100)
         {
             EnergyUpTF = false;

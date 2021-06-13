@@ -16,15 +16,16 @@ public class Shootmm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ShootmmTF == true)
+        if (ShootmmTF == true  && TextBattery.BatteryCurrent > 0)
         {
-            Invoke("SpawnBullet", 1);
+            InvokeRepeating("SpawnBullet", 1, 1);
         }
     }
 
     void SpawnBullet()
     {
         Instantiate(Bullet2, transform.position, transform.rotation);
+        this.CancelInvoke();
     }
 
 }

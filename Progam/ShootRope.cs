@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ShootRope : MonoBehaviour
 {
     [SerializeField]
+    public int damage = 1;
     public GameObject Cube1;
     public GameObject Cube2;
     public GameObject Cube3;
@@ -128,7 +129,6 @@ public class ShootRope : MonoBehaviour
             else if (Cube4TF == true)
             {
                 Textenergy.EnergyUpTF = false;
-                TextBattery.BatteryDownTF = true;
                 Textenergy.EnergyDownTF = true;
                 mobile.jumpTF = true;
                 mobile.mobileTF = true;
