@@ -8,6 +8,7 @@ public class ShootRope : MonoBehaviour
     public GameObject Cube1;
     public GameObject Cube2;
     public GameObject Cube3;
+    public GameObject Cube4;
     public GameObject weapon1;
     public GameObject weapon2;
     public GameObject Bullet;
@@ -15,6 +16,7 @@ public class ShootRope : MonoBehaviour
     public static bool Cube1TF;
     public static bool Cube2TF;
     public static bool Cube3TF;
+    public static bool Cube4TF;
     public static bool weapon1TF;
     public static bool weapon2TF;
 
@@ -52,11 +54,12 @@ public class ShootRope : MonoBehaviour
             ShootTF = false;
             Shoot();
         }
-
-        if (Input.GetMouseButtonDown(1))
+        
+        if (Textenergy.EnergyCurrent <= 0)
         {
             Release();
             Cube2TF = false;
+            Cube4TF = false;
             Cube1TF = false;
             Cube3TF = false;
             weapon1TF = false;
@@ -64,12 +67,32 @@ public class ShootRope : MonoBehaviour
             mobile.mobileTF = false;
             mobile.jumpTF = false;
             ShootTF = true;
+            Textenergy.EnergyUpTF = true;
+            Textenergy.EnergyDownTF = false;
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Release();
+            Cube2TF = false;
+            Cube4TF = false;
+            Cube1TF = false;
+            Cube3TF = false;
+            weapon1TF = false;
+            weapon2TF = false;
+            mobile.mobileTF = false;
+            mobile.jumpTF = false;
+            ShootTF = true;
+            Textenergy.EnergyUpTF = true;
+            Textenergy.EnergyDownTF = false;
         }
 
         if (target != null)
         {
             if (Cube1TF == true)
             {
+                Textenergy.EnergyUpTF = false;
+                Textenergy.EnergyDownTF = true;
                 mobile.jumpTF = true;
                 mobile.mobileTF = true;
                 line.SetPosition(0, ShootPoint.position);
@@ -80,6 +103,8 @@ public class ShootRope : MonoBehaviour
             }
             else if (Cube2TF == true)
             {
+                Textenergy.EnergyUpTF = false;
+                Textenergy.EnergyDownTF = true;
                 mobile.jumpTF = true;
                 mobile.mobileTF = true;
                 line.SetPosition(0, ShootPoint.position);
@@ -90,6 +115,8 @@ public class ShootRope : MonoBehaviour
             }
             else if (Cube3TF == true)
             {
+                Textenergy.EnergyUpTF = false;
+                Textenergy.EnergyDownTF = true;
                 mobile.jumpTF = true;
                 mobile.mobileTF = true;
                 line.SetPosition(0, ShootPoint.position);
@@ -98,8 +125,23 @@ public class ShootRope : MonoBehaviour
                 worldPosition.x += 8;
                 Cube3.transform.localPosition = new Vector3(worldPosition.x, worldPosition.y, 11.713f);
             }
+            else if (Cube4TF == true)
+            {
+                Textenergy.EnergyUpTF = false;
+                TextBattery.BatteryDownTF = true;
+                Textenergy.EnergyDownTF = true;
+                mobile.jumpTF = true;
+                mobile.mobileTF = true;
+                line.SetPosition(0, ShootPoint.position);
+                line.SetPosition(1, target.transform.position);
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                worldPosition.x += 8;
+                Cube4.transform.localPosition = new Vector3(worldPosition.x, worldPosition.y, 11.713f);
+            }
             else if (weapon1TF == true)
             {
+                Textenergy.EnergyUpTF = false;
+                Textenergy.EnergyDownTF = true;
                 mobile.jumpTF = true;
                 mobile.mobileTF = true;
                 line.SetPosition(0, ShootPoint.position);
@@ -112,6 +154,8 @@ public class ShootRope : MonoBehaviour
             }
             else if (weapon2TF == true)
             {
+                Textenergy.EnergyUpTF = false;
+                Textenergy.EnergyDownTF = true;
                 mobile.jumpTF = true;
                 mobile.mobileTF = true;
                 line.SetPosition(0, ShootPoint.position);
